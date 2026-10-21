@@ -1,0 +1,15 @@
+[submodule "dependencies/glad"]
+	path = dependencies/glad
+	url = https://github.com/Dav1dde/glad.git
+[submodule "dependencies/glfw"]
+	path = dependencies/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "dependencies/glm"]
+	path = dependencies/glm
+	url = https://github.com/g-truc/glm.git
+[submodule "dependencies/tinygltf"]
+	path = dependencies/tinygltf
+	url = https://github.com/syoyo/tinygltf.git
+[submodule "dependencies/tinyobjloader"]
+	path = dependencies/tinyobjloader
+	url = https://github.com/tinyobjloader/tinyobjloader.git

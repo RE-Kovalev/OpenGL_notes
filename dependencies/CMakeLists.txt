@@ -1,0 +1,48 @@
+# Все библиотеки по умолчанию динамические
+set(BUILD_SHARED_LIBS ON CACHE BOOL "" FORCE)
+
+# GLFW
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
+
+add_subdirectory(glfw)
+
+# GLAD 2
+add_subdirectory(glad/cmake)
+
+glad_add_library(glad SHARED
+    REPRODUCIBLE
+    LOCATION "${CMAKE_BINARY_DIR}/generated/glad"
+    API gl:core=4.6
+)
+
+# GLM
+set(GLM_BUILD_LIBRARY ON CACHE BOOL "" FORCE)
+set(GLM_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLM_BUILD_INSTALL OFF CACHE BOOL "" FORCE)
+
+add_subdirectory(glm)
+
+# TinyGLTF
+set(TINYGLTF_HEADER_ONLY OFF CACHE BOOL "" FORCE)
+set(TINYGLTF_INSTALL OFF CACHE BOOL "" FORCE)
+set(TINYGLTF_BUILD_LOADER_EXAMPLE OFF CACHE BOOL "" FORCE)
+set(TINYGLTF_BUILD_GL_EXAMPLES OFF CACHE BOOL "" FORCE)
+
+add_subdirectory(tinygltf)
+
+# TinyObjLoader
+set(TINYOBJLOADER_BUILD_TEST_LOADER OFF CACHE BOOL "" FORCE)
+set(TINYOBJLOADER_BUILD_OBJ_STICHER OFF CACHE BOOL "" FORCE)
+set(TINYOBJLOADER_BUILD_C_LIBRARY OFF CACHE BOOL "" FORCE)
+
+add_subdirectory(tinyobjloader)
+
+# Экспорт символов DLL на Windows
+if(WIN32)
+    set_target_properties(glm tinygltf PROPERTIES
+        WINDOWS_EXPORT_ALL_SYMBOLS ON
+    )
+endif()
