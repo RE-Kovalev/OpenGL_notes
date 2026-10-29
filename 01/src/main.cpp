@@ -23,6 +23,8 @@ int main(void)
     if (!glfwInit())
         throw std::runtime_error("Ошибка инициализации GLFW");
 
+    atexit(glfwTerminate); // Закончим работу с библиотекой при завершении программы
+
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); // Мажорная версия спецификаций OpenGL
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6); // Минорная версия спецификаций OpenGL
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // Контекст OpenGL, который поддерживает только основные функции
@@ -68,7 +70,6 @@ int main(void)
     }
 
     glfwDestroyWindow(window); // Уничтожим окно
-    glfwTerminate(); // Закончим работу с библиотекой
 
     return 0;
 }
