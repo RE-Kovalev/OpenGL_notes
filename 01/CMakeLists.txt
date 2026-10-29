@@ -28,3 +28,7 @@ target_link_libraries(${TARGET_NAME} PRIVATE
     glad
     glfw
 )
+
+set_target_properties(${TARGET_NAME} PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+)
